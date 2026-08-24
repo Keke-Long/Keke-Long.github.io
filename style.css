@@ -246,21 +246,26 @@ footer{padding:54px 0 38px;color:var(--soft);font-size:.72rem}
   max-width:1025px;
 }
 
-.notice-image{
-  display:block;
+.notice-strip{
+  display:flex;
   width:100%;
-  height:auto;
+  gap:0;
+  overflow:hidden;
   border:1px solid var(--line);
   border-radius:10px;
+  font-size:0;
+  line-height:0;
 }
 
-.notice-link{
-  display:inline-block;
-  margin-top:12px;
-  color:var(--green);
-  font-weight:400;
-  text-decoration:underline;
-  text-underline-offset:3px;
+.notice-strip img{
+  display:block;
+  flex:var(--slice-width) 1 0;
+  width:0;
+  min-width:0;
+  height:auto;
+  margin:0;
+  padding:0;
+  border:0;
 }
 
 .news-list{

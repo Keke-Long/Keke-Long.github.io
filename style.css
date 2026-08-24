@@ -241,40 +241,24 @@ footer{padding:54px 0 38px;color:var(--soft);font-size:.72rem}
 }
 
 
-.recruitment-card{
+.notice-card{
   margin-top:28px;
-  padding:24px 26px;
-  border:1px solid #278c7240;
+  max-width:1025px;
+}
+
+.notice-image{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
   border-radius:10px;
-  background:linear-gradient(135deg,#f8fcfa,var(--pale));
 }
 
-.recruitment-card h3{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:0 0 12px;
-  font-size:1.15rem;
-}
-
-.recruitment-card p{
-  margin:0;
-  max-width:900px;
-}
-
-.recruitment-dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--green);
-  flex:0 0 auto;
-}
-
-.recruitment-link{
+.notice-link{
   display:inline-block;
-  margin-top:16px;
+  margin-top:12px;
   color:var(--green);
-  font-weight:700;
+  font-weight:400;
   text-decoration:underline;
   text-underline-offset:3px;
 }
@@ -314,8 +298,6 @@ footer{padding:54px 0 38px;color:var(--soft);font-size:.72rem}
 
 @media(max-width:800px){
   .nav{flex-wrap:wrap}
-
-  .recruitment-card{padding:22px}
 
   .news-item{grid-template-columns:1fr;gap:10px}
 

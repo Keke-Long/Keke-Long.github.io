@@ -28,8 +28,7 @@
               "label": "Paper",
               "url": "https://arxiv.org/abs/2511.06496"
             }
-          ],
-          "summary": "A low-rank approach to mitigating vision-language model hallucinations in autonomous driving."
+          ]
         },
         {
           "slug": "vlm-mpc",
@@ -43,8 +42,7 @@
               "label": "Paper",
               "url": "https://doi.org/10.1016/j.trc.2025.105487"
             }
-          ],
-          "summary": "Connecting vision-language reasoning with model predictive control for autonomous driving."
+          ]
         },
         {
           "slug": "perl-trajectory-prediction",
@@ -58,8 +56,7 @@
               "label": "Paper",
               "url": "https://doi.org/10.1016/j.commtr.2025.100166"
             }
-          ],
-          "summary": "Combining physical knowledge and residual learning for vehicle trajectory prediction."
+          ]
         },
         {
           "slug": "residual-policy-learning",
@@ -73,8 +70,7 @@
               "label": "Paper",
               "url": "https://www.sciencedirect.com/science/article/abs/pii/S0968090X26002809"
             }
-          ],
-          "summary": "Combining physics and residual policy learning for the safety cruising of autonomous vehicles."
+          ]
         },
         {
           "slug": "trajectory-stitching",
@@ -88,12 +84,9 @@
               "label": "Paper",
               "url": "https://doi.org/10.1016/j.tre.2024.103799"
             }
-          ],
-          "summary": "Using physics-informed neural networks to stitch vehicle trajectories across different dynamics."
+          ]
         }
-      ],
-      "question": "How can physical knowledge make transportation AI more reliable?",
-      "intro": "This direction connects physical models with learning, prediction, reasoning, and control. The selected work spans residual learning, physics-informed neural networks, and vision-language models."
+      ]
     },
     {
       "slug": "cavs-digital-twins",
@@ -116,8 +109,7 @@
               "label": "Post",
               "url": "https://www.linkedin.com/posts/hangyu-li-218987179_cvpr2026-share-7469265299154948097-nkVy/"
             }
-          ],
-          "summary": "Real-world vehicle-to-vehicle observations for studying cooperative perception in complex, adverse traffic scenarios."
+          ]
         },
         {
           "slug": "traffic-oscillation",
@@ -131,8 +123,7 @@
               "label": "Paper",
               "url": "https://doi.org/10.1016/j.commtr.2024.100154"
             }
-          ],
-          "summary": "Physics-enhanced residual learning and predictive control for mitigating traffic oscillations, with field-experiment evidence."
+          ]
         },
         {
           "slug": "shuttle-comfort",
@@ -146,12 +137,9 @@
               "label": "Paper",
               "url": "https://doi.org/10.1016/j.tra.2025.104613"
             }
-          ],
-          "summary": "Studying how riding an autonomous shuttle changes comfort attitudes from the perspectives of riders, drivers, and pedestrians."
+          ]
         }
-      ],
-      "question": "How do automated vehicles perform in challenging real-world conditions?",
-      "intro": "This direction brings together cooperative perception, vehicle control, field experiments, and human responses to automated vehicles."
+      ]
     },
     {
       "slug": "intelligent-transportation-systems",
@@ -174,8 +162,7 @@
               "label": "Paper",
               "url": "https://ieeexplore.ieee.org/abstract/document/11315144/"
             }
-          ],
-          "summary": "Aerial vehicle trajectory observations along Park Street for studying traffic behavior and corridor operations."
+          ]
         },
         {
           "slug": "aerial-vehicle-detection",
@@ -189,8 +176,7 @@
               "label": "Dataset",
               "url": "https://github.com/CATS-Lab/Field-data-Drone-View-Vehicle-Image-Set"
             }
-          ],
-          "summary": "A drone-view vehicle image dataset for transportation sensing and vehicle detection."
+          ]
         },
         {
           "slug": "digital-twin",
@@ -204,12 +190,9 @@
               "label": "Paper",
               "url": "https://doi.org/10.3390/su17104391"
             }
-          ],
-          "summary": "An AI-enabled digital twin framework for safe and sustainable intelligent transportation."
+          ]
         }
-      ],
-      "question": "How can sensing and digital models improve transportation systems?",
-      "intro": "This direction connects aerial traffic observations, vehicle trajectory data, and digital twins to study interactions among people, vehicles, and infrastructure."
+      ]
     }
   ],
   "profileSections": {

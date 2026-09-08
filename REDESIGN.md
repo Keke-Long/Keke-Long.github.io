@@ -9,16 +9,16 @@ Do not merge or replace the public website before January 1, 2027 (America/New_Y
 - Homepage order: original Safety & Mobility concept ring, three research directions in parallel, News.
 - Header: Rutgers logo, Keke Long’s Lab, Rutgers University. No persistent portrait sidebar.
 - Preserve the user's three directions and curated selection. No Publications page.
-- Papers, datasets, and platforms belong to their research directions and have stable project pages.
+- Papers, datasets, and platforms are listed directly on their research direction pages with the original external resource links. There are no standalone project introduction pages.
 - About Me holds the portrait, background, teaching experience, service, and Scholar link.
 - Join Us preserves the original ten announcement image slices. Do not transcribe the application email, subject, or announcement into HTML, alt text, JSON, or structured metadata.
 - Do not invent students, courses, an office address, a university email address, or a separate lab acronym.
-- The existing webpage material is the source for all project titles, venues, links, and figures. Project summaries are concise editorial descriptions of that material, without new performance claims.
+- The existing webpage material is the source for all project titles, venues, links, and figures. Do not add per-item summaries or extra explanatory sections.
 
 ## Editing and building
 
 Run `python site/build.py` with Python 3.12 or newer to regenerate the preview pages. No package installation is needed.
-Edit `site/content.json` for projects, short descriptions, optional Chinese name, and future members/courses.
+Edit `site/content.json` for research entries, optional Chinese name, and future members/courses.
 Edit `site/build.py` for shared page templates and the shared templates; edit `style.css` for design.
 Root HTML files are the GitHub Pages output. `dist/` contains the identical website for the owner-only Sites preview. Both are tracked so the source revision fully identifies the preview.
 
@@ -52,7 +52,7 @@ Rutgers logo and favicon retain the official scarlet `#cc0033`. The interface us
 
 ## Validation
 
-Static checks cover every generated HTML route, local image/style/script references, internal links and fragments, metadata, all eleven original projects and their links, and byte-for-byte preservation of the ten announcement slices. JavaScript is syntax-checked. Browser visual testing was not requested and was not run.
+Static checks cover every generated HTML route, local image/style/script references, internal links and fragments, metadata, all eleven original research entries and their links, and byte-for-byte preservation of the ten announcement slices. JavaScript is syntax-checked. Browser visual testing was not requested and was not run.
 
 The user explicitly prefers underlined text links. Preserve every existing external URL and the link underlines. Member portraits and names both link to their profile pages. The header remains About Me until students actually join, even after the January appointment.
 
@@ -63,3 +63,7 @@ The user explicitly prefers underlined text links. Preserve every existing exter
 - White backgrounds, deep blue-gray text, restrained blue-teal accents. Rutgers branding stays red. Favicon is the original Rutgers R artwork.
 - News entries use only a date and one paragraph, with underlined inline links. No per-item title, category, or subtitle.
 - Maintain News in `site/content.json` under `news`, with two fields per entry: `date` (YYYY-MM) and `text`. A link uses `[label](https://...)` inside the same paragraph. The displayed month is generated automatically. No title field is needed.
+
+## Research simplification
+
+Each of the three direction pages has its direction title and existing short opening description, followed directly by the research entries. Keep each entry's type, title, original figure, publication information when available, and underlined Paper/Dataset/Post links. Do not add a question heading, explanatory direction section, entry summary, Project details link, or standalone project introduction page. Titles and figures are plain content, not links to removed pages. Removed pages are also removed from the sitemap and deployment bundle.

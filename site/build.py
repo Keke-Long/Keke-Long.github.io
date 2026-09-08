@@ -25,7 +25,6 @@ PUBLIC = args.publish
 ORIGIN = 'https://keke-long.github.io'
 PAGES = {}
 DIRECTIONS = DATA['directions']
-PROJECTS = {p['slug']: (p, d) for d in DIRECTIONS for p in d['projects']}
 NAME = DATA['name'] + (' · ' + DATA['chineseName'] if DATA['chineseName'] else '')
 
 def a(url, text, cls=''):
@@ -84,8 +83,8 @@ def project_links(p):
     return '<div class="project-links">'+''.join(a(l['url'],l['label'],'resource-link') for l in p['links'])+'</div>'
 
 def project_row(p):
-    href='/projects/'+p['slug']+'/'
-    return f'''<article class="project-row"><a class="project-image" href="{href}">{image(p['image'],p['alt'])}</a><div class="project-copy"><span class="eyebrow">{esc(p['kind'])}</span><h2>{a(href,p['title'])}</h2><p>{esc(p['summary'])}</p><p class="publication">{esc(p['publication'])}</p>{project_links(p)}{a(href,'Project details','detail-link')}</div></article>'''
+    publication = f'<p class="publication">{esc(p["publication"])}</p>' if p['publication'] else ''
+    return f'''<article class="project-row"><figure class="project-image">{image(p['image'],p['alt'])}</figure><div class="project-copy"><span class="eyebrow">{esc(p['kind'])}</span><h2>{esc(p['title'])}</h2>{publication}{project_links(p)}</div></article>'''
 
 hero = '''<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">Physics-Enhanced AI · CAVs · ITS</p><h1 id="hero-title">Building Transportation AI that can be <em>Trusted.</em></h1><p class="hero-description">Physics-enhanced learning, connected and automated vehicles, and intelligent transportation systems.</p></div>
 <div class="concept" role="img" aria-label="Safety and Mobility at the center of Control, Reason, Perception, and Validate."><div class="loop"><div class="core">Safety &amp;<br>Mobility</div><span class="lab la">Control</span><span class="lab lb">Reason</span><span class="lab lc">Perception</span><span class="lab ld">Validate</span></div></div></section>'''
@@ -112,11 +111,8 @@ shell('/','Home','Keke Long’s Lab: physics-enhanced AI, connected and automate
 research = '<div class="wrap"><header class="page-heading"><p class="eyebrow">Research</p><h1>Three connected directions.</h1><p>Developing physically consistent AI methods, evaluating connected and automated vehicles, and connecting people, vehicles, and infrastructure.</p></header>'+research_cards()+'<p class="scholar-note">'+a(DATA['scholar'],'Full publication record on Google Scholar')+'</p></div>'
 shell('/research/','Research','Explore Keke Long’s three research directions, with selected papers, datasets, and platforms.',research,'research')
 for i,d in enumerate(DIRECTIONS):
-    body=f'''<div class="wrap"><header class="page-heading"><div class="breadcrumb">{a('/research/','Research')}<span>/</span><span>0{i+1}</span></div><h1>{esc(d['title'])}</h1><p>{esc(d['description'])}</p></header><div class="direction-intro"><h2>{esc(d['question'])}</h2><p>{esc(d['intro'])}</p></div><div class="projects">{''.join(project_row(p) for p in d['projects'])}</div><nav class="direction-switch" aria-label="Other research directions">{''.join(a('/research/'+o['slug']+'/',o['title']) for o in DIRECTIONS if o!=d)}</nav></div>'''
+    body=f'''<div class="wrap"><header class="page-heading"><div class="breadcrumb">{a('/research/','Research')}<span>/</span><span>0{i+1}</span></div><h1>{esc(d['title'])}</h1><p>{esc(d['description'])}</p></header><div class="projects">{''.join(project_row(p) for p in d['projects'])}</div><nav class="direction-switch" aria-label="Other research directions">{''.join(a('/research/'+o['slug']+'/',o['title']) for o in DIRECTIONS if o!=d)}</nav></div>'''
     shell('/research/'+d['slug']+'/',d['title'],d['description'],body,'research')
-    for p in d['projects']:
-        body=f'''<div class="wrap project-detail"><header class="page-heading"><div class="breadcrumb">{a('/research/','Research')}<span>/</span>{a('/research/'+d['slug']+'/',d['title'])}</div><p class="eyebrow">{esc(p['kind'])}</p><h1>{esc(p['title'])}</h1><p>{esc(p['summary'])}</p><p class="publication">{esc(p['publication'])}</p>{project_links(p)}</header><figure class="project-full">{image(p['image'],p['alt'],eager=True)}<figcaption>{esc(p['alt'])}</figcaption></figure><section class="project-context"><h2>Research context</h2><p>{esc(d['intro'])}</p>{a('/research/'+d['slug']+'/','Explore related work','text-link')}</section></div>'''
-        shell('/projects/'+p['slug']+'/',p['title'],p['summary'],body,'research')
 
 bio = ('I am an Assistant Professor in the Department of Civil and Environmental Engineering at Rutgers University.' if PUBLIC else 'I am a postdoctoral Research Associate at the University of Wisconsin–Madison. I will join the Department of Civil and Environmental Engineering at Rutgers University as an Assistant Professor in January 2027.')
 location_html = '<p>Madison, WI, USA</p>' if not PUBLIC else ''

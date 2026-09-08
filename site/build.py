@@ -57,7 +57,7 @@ def shell(path, title, description, body, active):
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-blue">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-compact">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -65,7 +65,7 @@ def shell(path, title, description, body, active):
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
 <nav id="navigation" aria-label="Main navigation">{links}</nav></div></header>
 <main id="main">{body}</main>
-<footer class="site-footer"><div class="footer-inner"><div><strong>{esc(DATA['labName'])}</strong><p>Physics-Enhanced AI · CAVs · ITS</p></div><div class="footer-links">{a(DATA['scholar'],'Google Scholar')}{a(DATA['github'],'GitHub')}{a('/about/','About Keke Long')}</div><p class="copyright">© {year} {esc(NAME)}</p></div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><strong>{esc(DATA['labName'])} @ Rutgers University</strong><p class="footer-address">Department of Civil and Environmental Engineering<br>Rutgers University–New Brunswick<span class="footer-location">Piscataway, NJ, USA</span></p></div><div class="footer-meta"><div class="footer-links">{a(DATA['scholar'],'Google Scholar')}{a(DATA['github'],'GitHub')}{a('/about/','About Keke Long')}</div><p class="copyright">© {year} {esc(NAME)}</p></div></div></footer>
 </body></html>'''
     PAGES[path] = page
 
@@ -86,7 +86,7 @@ def project_row(p):
     publication = f'<p class="publication">{esc(p["publication"])}</p>' if p['publication'] else ''
     return f'''<article class="project-row"><figure class="project-image">{image(p['image'],p['alt'])}</figure><div class="project-copy"><span class="eyebrow">{esc(p['kind'])}</span><h2>{esc(p['title'])}</h2>{publication}{project_links(p)}</div></article>'''
 
-hero = '''<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">Physics-Enhanced AI · CAVs · ITS</p><h1 id="hero-title">Building Transportation AI that can be <em>Trusted.</em></h1><p class="hero-description">Physics-enhanced learning, connected and automated vehicles, and intelligent transportation systems.</p></div>
+hero = '''<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">Physics-Enhanced AI · CAVs · ITS</p><h1 id="hero-title">Building Transportation AI<br>that can be <em>Trusted.</em></h1><p class="hero-description">Physics-enhanced learning, connected and automated vehicles, and intelligent transportation systems.</p></div>
 <div class="concept" role="img" aria-label="Safety and Mobility at the center of Control, Reason, Perception, and Validate."><div class="loop"><div class="core">Safety &amp;<br>Mobility</div><span class="lab la">Control</span><span class="lab lb">Reason</span><span class="lab lc">Perception</span><span class="lab ld">Validate</span></div></div></section>'''
 def news_paragraph(text):
     """One editable paragraph; Markdown links keep news maintenance simple."""
@@ -105,7 +105,7 @@ for item in DATA.get('news', []):
     news_rows.append(f'<article class="news-row"><time datetime="{esc(item["date"])}">{label}</time><p>{news_paragraph(item["text"])}</p></article>')
 news = '<section class="news-section wrap" id="news"><div class="section-heading"><h2>News</h2></div>' + ''.join(news_rows) + '</section>'
 
-home = hero + '<section class="research-section wrap" id="research"><div class="section-heading"><p class="eyebrow">Research directions</p><h2>From physical insight<br>to transportation systems.</h2></div>'+research_cards()+'</section>'+news
+home = hero + '<section class="research-section wrap" id="research"><div class="section-heading"><h2>Research Directions</h2></div>'+research_cards()+'</section>'+news
 shell('/','Home','Keke Long’s Lab: physics-enhanced AI, connected and automated vehicles, and intelligent transportation systems. Selected research, datasets, and platforms.',home,'home')
 
 research = '<div class="wrap"><header class="page-heading"><p class="eyebrow">Research</p><h1>Three connected directions.</h1><p>Developing physically consistent AI methods, evaluating connected and automated vehicles, and connecting people, vehicles, and infrastructure.</p></header>'+research_cards()+'<p class="scholar-note">'+a(DATA['scholar'],'Full publication record on Google Scholar')+'</p></div>'

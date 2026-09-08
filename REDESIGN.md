@@ -67,3 +67,11 @@ The user explicitly prefers underlined text links. Preserve every existing exter
 ## Research simplification
 
 Each of the three direction pages has its direction title and existing short opening description, followed directly by the research entries. Keep each entry's type, title, original figure, publication information when available, and underlined Paper/Dataset/Post links. Do not add a question heading, explanatory direction section, entry summary, Project details link, or standalone project introduction page. Titles and figures are plain content, not links to removed pages. Removed pages are also removed from the sitemap and deployment bundle.
+
+## Compact homepage refinement
+
+- Rutgers R uses one 42 px width at every breakpoint; do not reintroduce larger narrow-screen overrides.
+- Homepage hero uses a smaller circle and reduced vertical padding. The main heading breaks after “AI”, giving two lines on wide screens and natural wrapping on small screens.
+- The homepage section title is simply “Research Directions”, with no eyebrow or extra slogan.
+- The compact footer reads “Keke Long’s Lab @ Rutgers University”, followed by department, university, and location. Links and copyright share a compact secondary column.
+- Department and location source: https://cee.rutgers.edu/contact-us (September 8, 2026). Use Department of Civil and Environmental Engineering; Rutgers University–New Brunswick; Piscataway, NJ, USA. This is the department location, not an invented personal office address.

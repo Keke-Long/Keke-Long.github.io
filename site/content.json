@@ -1,0 +1,221 @@
+{
+  "name": "Keke Long",
+  "labName": "Keke Long Lab",
+  "chineseName": "",
+  "mode": "preview",
+  "launchDate": "2027-01-01",
+  "launchTimezone": "America/New_York",
+  "scholar": "https://scholar.google.com/citations?hl=en&user=zcTxZZ8AAAAJ",
+  "github": "https://github.com/Keke-Long",
+  "logo": "assets/brand/rutgers-r.svg",
+  "people": [],
+  "courses": [],
+  "directions": [
+    {
+      "slug": "physics-enhanced-learning",
+      "title": "Physics-Enhanced AI for Transportation",
+      "description": "This research develops interpretable, physically consistent, and robust AI methods for transportation systems, with applications in multimodal reasoning, prediction, decision-making, and control.",
+      "projects": [
+        {
+          "slug": "low-rank-vlm",
+          "title": "A Low-Rank Method for Vision Language Model Hallucination Mitigation in Autonomous Driving",
+          "kind": "Paper",
+          "publication": "arXiv, 2025",
+          "image": "assets/images/papers/optimized/P1_Low_Rank_VLM.webp",
+          "alt": "Low-rank vision-language model hallucination mitigation framework",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://arxiv.org/abs/2511.06496"
+            }
+          ],
+          "summary": "A low-rank approach to mitigating vision-language model hallucinations in autonomous driving."
+        },
+        {
+          "slug": "vlm-mpc",
+          "title": "VLM-MPC: Model Predictive Controller Augmented Vision Language Model for Autonomous Driving",
+          "kind": "Paper",
+          "publication": "Transportation Research Part C, 2025",
+          "image": "assets/images/papers/optimized/P2_VLM_MPC.webp",
+          "alt": "VLM-MPC autonomous driving framework",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.1016/j.trc.2025.105487"
+            }
+          ],
+          "summary": "Connecting vision-language reasoning with model predictive control for autonomous driving."
+        },
+        {
+          "slug": "perl-trajectory-prediction",
+          "title": "Physical Enhanced Residual Learning (PERL) Framework for Vehicle Trajectory Prediction",
+          "kind": "Paper",
+          "publication": "Communications in Transportation Research, 2025",
+          "image": "assets/images/papers/optimized/P3_PERL_Trajectory_Prediction.webp",
+          "alt": "Physics-enhanced residual learning framework for vehicle trajectory prediction",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.1016/j.commtr.2025.100166"
+            }
+          ],
+          "summary": "Combining physical knowledge and residual learning for vehicle trajectory prediction."
+        },
+        {
+          "slug": "residual-policy-learning",
+          "title": "Physics Enhanced Residual Policy Learning for Safety Cruising of Autonomous Vehicles",
+          "kind": "Paper",
+          "publication": "Transportation Research Part C, 2026",
+          "image": "assets/images/papers/optimized/P5_PERPL.webp",
+          "alt": "Physics-enhanced residual policy learning framework",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://www.sciencedirect.com/science/article/abs/pii/S0968090X26002809"
+            }
+          ],
+          "summary": "Combining physics and residual policy learning for the safety cruising of autonomous vehicles."
+        },
+        {
+          "slug": "trajectory-stitching",
+          "title": "Physics-informed Neural Network for Cross-dynamics Vehicle Trajectory Stitching",
+          "kind": "Paper",
+          "publication": "Transportation Research Part E, 2024",
+          "image": "assets/images/papers/optimized/P6_Trajectory_Stitching.webp",
+          "alt": "Physics-informed neural network for cross-dynamics trajectory stitching",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.1016/j.tre.2024.103799"
+            }
+          ],
+          "summary": "Using physics-informed neural networks to stitch vehicle trajectories across different dynamics."
+        }
+      ],
+      "question": "How can physical knowledge make transportation AI more reliable?",
+      "intro": "This direction connects physical models with learning, prediction, reasoning, and control. The selected work spans residual learning, physics-informed neural networks, and vision-language models."
+    },
+    {
+      "slug": "cavs-digital-twins",
+      "title": "Connected and Automated Vehicles",
+      "description": "This research evaluates and improves the safety and performance of connected and automated vehicles in challenging scenarios, including extreme weather, long-tail events, and interactions with vulnerable road users.",
+      "projects": [
+        {
+          "slug": "cats-v2v",
+          "title": "CATS-V2V: A Real-World Vehicle-to-Vehicle Cooperative Perception Dataset with Complex Adverse Traffic Scenarios",
+          "kind": "Dataset",
+          "publication": "",
+          "image": "assets/images/datasets/cats-v2v.png",
+          "alt": "CATS-V2V cooperative perception dataset",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://openaccess.thecvf.com/content/CVPR2026F/html/Li_CATS-V2V_A_Real-World_Vehicle-to-Vehicle_Cooperative_Perception_Dataset_with_Complex_Adverse_CVPRF_2026_paper.html"
+            },
+            {
+              "label": "Post",
+              "url": "https://www.linkedin.com/posts/hangyu-li-218987179_cvpr2026-share-7469265299154948097-nkVy/"
+            }
+          ],
+          "summary": "Real-world vehicle-to-vehicle observations for studying cooperative perception in complex, adverse traffic scenarios."
+        },
+        {
+          "slug": "traffic-oscillation",
+          "title": "Traffic Oscillation Mitigation with Physics-Enhanced Residual Learning-Based Predictive Control",
+          "kind": "Paper",
+          "publication": "Communications in Transportation Research, 2024",
+          "image": "assets/images/papers/optimized/P4_Traffic_Oscillation.webp",
+          "alt": "Field experiment and predictive control framework for traffic oscillation mitigation",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.1016/j.commtr.2024.100154"
+            }
+          ],
+          "summary": "Physics-enhanced residual learning and predictive control for mitigating traffic oscillations, with field-experiment evidence."
+        },
+        {
+          "slug": "shuttle-comfort",
+          "title": "Before and After Riding: Changing Comfort Attitude Towards Autonomous Shuttles from Perspectives as Riders, Drivers, and Pedestrians",
+          "kind": "Paper",
+          "publication": "Transportation Research Part A, 2025",
+          "image": "assets/images/papers/optimized/P8_Shuttle_Comfort.webp",
+          "alt": "Autonomous shuttle operated in Dunedin, Florida",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.1016/j.tra.2025.104613"
+            }
+          ],
+          "summary": "Studying how riding an autonomous shuttle changes comfort attitudes from the perspectives of riders, drivers, and pedestrians."
+        }
+      ],
+      "question": "How do automated vehicles perform in challenging real-world conditions?",
+      "intro": "This direction brings together cooperative perception, vehicle control, field experiments, and human responses to automated vehicles."
+    },
+    {
+      "slug": "intelligent-transportation-systems",
+      "title": "Intelligent Transportation Systems",
+      "description": "This research studies how people, vehicles, and transportation infrastructure can be connected and coordinated to improve safety and efficiency.",
+      "projects": [
+        {
+          "slug": "park-street",
+          "title": "Park Street Aerial Vehicle Trajectory Dataset",
+          "kind": "Dataset",
+          "publication": "",
+          "image": "assets/images/datasets/park-street-aerial-vehicle-trajectory.png",
+          "alt": "Park Street aerial vehicle trajectory dataset",
+          "links": [
+            {
+              "label": "Dataset",
+              "url": "https://github.com/CATS-Lab/Filed-data-Corridor-Vehicle-Trajectory"
+            },
+            {
+              "label": "Paper",
+              "url": "https://ieeexplore.ieee.org/abstract/document/11315144/"
+            }
+          ],
+          "summary": "Aerial vehicle trajectory observations along Park Street for studying traffic behavior and corridor operations."
+        },
+        {
+          "slug": "aerial-vehicle-detection",
+          "title": "Aerial-View Vehicle Detection Dataset",
+          "kind": "Dataset",
+          "publication": "",
+          "image": "assets/images/datasets/aerial-view-vehicle-detection.png",
+          "alt": "Aerial-view vehicle detection dataset",
+          "links": [
+            {
+              "label": "Dataset",
+              "url": "https://github.com/CATS-Lab/Field-data-Drone-View-Vehicle-Image-Set"
+            }
+          ],
+          "summary": "A drone-view vehicle image dataset for transportation sensing and vehicle detection."
+        },
+        {
+          "slug": "digital-twin",
+          "title": "AI-Enabled Digital Twin Framework for Safe and Sustainable Intelligent Transportation",
+          "kind": "Platform",
+          "publication": "Sustainability, 2025",
+          "image": "assets/images/papers/optimized/P7_Digital_Twin.webp",
+          "alt": "AI-enabled transportation digital twin framework",
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://doi.org/10.3390/su17104391"
+            }
+          ],
+          "summary": "An AI-enabled digital twin framework for safe and sustainable intelligent transportation."
+        }
+      ],
+      "question": "How can sensing and digital models improve transportation systems?",
+      "intro": "This direction connects aerial traffic observations, vehicle trajectory data, and digital twins to study interactions among people, vehicles, and infrastructure."
+    }
+  ],
+  "profileSections": {
+    "affiliation": "\n<h2>Affiliation</h2>\n<div class=\"plain\">\n<ul>\n<li>\n<strong>Postdoctoral Research Associate, University of Wisconsin–Madison</strong>\n<br>2024.12–Present</li>\n</ul>\n</div>\n",
+    "education": "\n<h2>Education</h2>\n<div class=\"plain\">\n<ul>\n<li>\n<strong>Ph.D., Civil and Environmental Engineering, University of Wisconsin–Madison</strong>\n<br>Supervisor: Prof. Xiaopeng Li · 2022.08–2024.12</li>\n<li>\n<strong>Doctoral Studies, Civil Engineering, University of South Florida</strong>\n<br>Supervisor: Prof. Xiaopeng Li · 2021.08–2022.08</li>\n<li>\n<strong>M.S., Transportation Information and Control Engineering, Tongji University</strong>\n<br>Supervisor: Prof. Xiaoguang Yang · 2018.09–2021.06</li>\n<li>\n<strong>B.Eng., Traffic Engineering, Chang’an University</strong>\n<br>2014.09–2018.06</li>\n</ul>\n</div>\n",
+    "teaching": "\n<h2>Teaching</h2>\n<div class=\"plain\">\n<ul>\n<li>\n<a href=\"https://ccat.umtri.umich.edu/education/cat-certificate/fundamentals-for-cav-modeling/\">Fundamentals for Connected and Automated Vehicle (CAV) Modeling</a>, CCAT — Co-instructor</li>\n<li>CIV ENGR 570: Connected and Automated Transportation Systems — Teaching Assistant, UW–Madison, Spring 2025</li>\n<li>CIV ENGR 525: Case Studies Exploring Infrastructure Sustainability and Climate Change — Teaching Assistant, UW–Madison, Spring and Fall 2024</li>\n<li>CIV ENGR 574: Traffic Control — Teaching Assistant, UW–Madison, Fall 2023 and Fall 2025</li>\n<li>ENG 356: Statics — Teaching Assistant, University of South Florida, Fall 2021</li>\n</ul>\n</div>\n",
+    "service": "\n<h2>Service</h2>\n<div class=\"plain\">\n<h3>Reviewer</h3>\n<ul>\n<li>Transportation Research Part B / C / E</li>\n<li>Accident Analysis and Prevention</li>\n<li>Engineering Applications of Artificial Intelligence</li>\n<li>Computers and Electrical Engineering</li>\n<li>Expert Systems with Applications</li>\n<li>Transportation Research Record</li>\n<li>Transportation Research Board Annual Meeting</li>\n<li>Robotics and Autonomous Systems</li>\n<li>Cleaner Logistics and Supply Chain</li>\n</ul>\n</div>\n"
+  }
+}

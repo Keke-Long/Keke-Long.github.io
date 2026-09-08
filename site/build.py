@@ -34,7 +34,9 @@ def image(path, alt, cls='', eager=False):
     return f'<img src="/{esc(path)}" alt="{esc(alt, quote=True)}" class="{cls}" loading="{"eager" if eager else "lazy"}" decoding="async">'
 
 def shell(path, title, description, body, active):
-    nav = [('Home','/','home'),('Research','/research/','research'),('About','/about/','about')]
+    if DATA['people'] and active == 'about':
+        active = 'people'
+    nav = [('Home','/','home'),('Research','/research/','research'),('About Me','/about/','about')]
     if DATA['people']:
         nav[2] = ('People','/people/','people')
     if DATA['courses']:
@@ -44,7 +46,7 @@ def shell(path, title, description, body, active):
     mark = image(DATA['logo'], 'Rutgers University', 'university-logo', True) if DATA['logo'] else ''
     fulltitle = f'{title} | {NAME}' if path != '/' else f'{DATA["labName"]} | {NAME} | Rutgers University'
     robots = 'index, follow, noimageindex' if PUBLIC else 'noindex, nofollow, noimageindex'
-    structured = {'@context':'https://schema.org','@type':'Person','name':DATA['name'],'url':ORIGIN+'/about/','sameAs':[DATA['scholar'],DATA['github']]}
+    structured = {'@context':'https://schema.org','@type':'Person','name':DATA['name'],'url':ORIGIN+'/about/','sameAs':[DATA['scholar'],DATA['github'],'https://catslab.engr.wisc.edu/staff/long-keke/']}
     if DATA['chineseName']:
         structured['alternateName'] = DATA['chineseName']
     if PUBLIC:
@@ -100,14 +102,15 @@ for i,d in enumerate(DIRECTIONS):
         shell('/projects/'+p['slug']+'/',p['title'],p['summary'],body,'research')
 
 bio = ('I am an Assistant Professor in the Department of Civil and Environmental Engineering at Rutgers University.' if PUBLIC else 'I am a postdoctoral Research Associate at the University of Wisconsin–Madison. I will join the Department of Civil and Environmental Engineering at Rutgers University as an Assistant Professor in January 2027.')
+location_html = '<p>Madison, WI, USA</p>' if not PUBLIC else ''
 appointment = '<div class="appointment"><span class="eyebrow">'+('Rutgers University' if PUBLIC else 'Incoming appointment · January 2027')+'</span><p>Assistant Professor<br>Civil and Environmental Engineering<br>Rutgers University</p></div>'
-about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">About</p><h1>{esc(NAME)}</h1><p>{bio}</p><p>My research develops physics-enhanced AI for intelligent transportation systems, with applications in CAV decision-making, control, perception, and safety evaluation.</p><div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
+about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">About Me</p><h1>{esc(NAME)}</h1><p>{bio}</p><p>My research develops physics-enhanced AI for intelligent transportation systems, with applications in CAV decision-making, control, perception, and safety evaluation.</p><div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2>{location_html}<p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
 if not PUBLIC:
     about += '<section id="affiliation">'+DATA['profileSections']['affiliation']+'</section>'
 for section in ['education','teaching','service']:
     about += '<section id="'+section+'">'+DATA['profileSections'][section]+'</section>'
 about += '</div></div></div>'
-shell('/about/','About Keke Long','Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')
+shell('/about/','About Me','Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')
 
 widths=[118,117,117,118,118,117,117,118,118,117]
 slices=''.join(f'<img src="/assets/images/notice-slices/notice-{i:02}.png" alt="" aria-hidden="true" width="{w}" height="331" style="flex:{w} 0 0">' for i,w in enumerate(widths,1))
@@ -116,16 +119,17 @@ shell('/join/','Join Us','Research opportunities at Keke Long Lab, Rutgers Unive
 
 # Optional sections appear only after real records have been added.
 if DATA['people']:
-    members = '<article class="member">'+image('assets/images/profile.jpg','Keke Long')+'<h2>'+a('/about/',NAME)+'</h2><p>Faculty</p></article>'
+    members = '<article class="member">'+'<a href="/about/">'+image('assets/images/profile.jpg','Keke Long')+'</a><h2>'+a('/about/',NAME)+'</h2><p>Faculty</p></article>'
     for m in DATA['people']:
-        members += '<article class="member">'+(image(m['image'],m['name']) if m.get('image') else '')+'<h2>'+ (a(m['url'],m['name']) if m.get('url') else esc(m['name']))+'</h2><p>'+esc(m['role'])+'</p></article>'
+        members += '<article class="member">'+(('<a href="'+esc(m['url'],quote=True)+'">'+image(m['image'],m['name'])+'</a>') if m.get('image') and m.get('url') else (image(m['image'],m['name']) if m.get('image') else ''))+'<h2>'+ (a(m['url'],m['name']) if m.get('url') else esc(m['name']))+'</h2><p>'+esc(m['role'])+'</p></article>'
     shell('/people/','People','Members of Keke Long Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">People</p><h1>Our team.</h1></header><div class="member-grid">'+members+'</div></div>','people')
 if DATA['courses']:
     courses=''.join('<article class="course"><p class="eyebrow">'+esc(c['term'])+'</p><h2>'+a(c['url'],c['title'])+'</h2><p>'+esc(c['description'])+'</p></article>' for c in DATA['courses'])
     shell('/teaching/','Teaching','Courses taught by Keke Long at Rutgers University.','<div class="wrap"><header class="page-heading"><p class="eyebrow">Teaching</p><h1>Courses.</h1></header>'+courses+'</div>','teaching')
 
 # Preserve the old direction URL and old homepage anchor entrypoints.
-shell('/research/trustworthy-ai/','Research','Research by Keke Long.','<div class="wrap"><header class="page-heading"><h1>Research</h1><p>'+a('/research/','Explore the three research directions')+'</p></header></div>','research')
+shell('/research/trustworthy-ai/','Physics-Enhanced AI for Transportation','Physics-enhanced AI research by Keke Long.','<div class="wrap"><header class="page-heading"><h1>Physics-Enhanced AI for Transportation</h1><p>'+a('/research/physics-enhanced-learning/','Continue to Physics-Enhanced AI for Transportation')+'</p></header></div>','research')
+PAGES['/research/trustworthy-ai/'] = PAGES['/research/trustworthy-ai/'].replace('</head>', '<meta http-equiv="refresh" content="0; url=/research/physics-enhanced-learning/"></head>').replace(ORIGIN+'/research/trustworthy-ai/', ORIGIN+'/research/physics-enhanced-learning/')
 shell('/404.html','Page not found','Find research and information from Keke Long Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">404</p><h1>Page not found.</h1><p>'+a('/','Return to the homepage')+' or '+a('/research/','explore the research')+'.</p></header></div>','')
 
 dist=ROOT/'dist'

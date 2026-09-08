@@ -10,7 +10,7 @@ Do not merge or replace the public website before January 1, 2027 (America/New_Y
 - Header: Rutgers logo, Keke Long Lab, Rutgers University. No persistent portrait sidebar.
 - Preserve the user's three directions and curated selection. No Publications page.
 - Papers, datasets, and platforms belong to their research directions and have stable project pages.
-- About holds the portrait, background, teaching experience, service, and Scholar link.
+- About Me holds the portrait, background, teaching experience, service, and Scholar link.
 - Join Us preserves the original ten announcement image slices. Do not transcribe the application email, subject, or announcement into HTML, alt text, JSON, or structured metadata.
 - Do not invent students, courses, an office address, a university email address, or a separate lab acronym.
 - The existing webpage material is the source for all project titles, venues, links, and figures. Project summaries are concise editorial descriptions of that material, without new performance claims.
@@ -40,7 +40,7 @@ New university contact details and courses can be added when known; their absenc
 
 `people` is an empty list. Add records with `name`, `role`, optional local `image`, and optional `url` to enable People. The faculty entry links to the stable `/about/` page.
 `courses` is an empty list. Add records with `title`, `term`, `description`, and `url` to enable Teaching.
-When members exist, People replaces About in the primary navigation. The footer retains the personal About link.
+When members exist, People replaces About Me in the primary navigation. The footer retains the personal About link.
 The older homepage anchors and research direction URLs remain usable.
 
 ## Asset provenance
@@ -53,3 +53,5 @@ Scarlet is `#cc0033`, matching the official university SVG. Reference: `https://
 ## Validation
 
 Static checks cover every generated HTML route, local image/style/script references, internal links and fragments, metadata, all eleven original projects and their links, and byte-for-byte preservation of the ten announcement slices. JavaScript is syntax-checked. Browser visual testing was not requested and was not run.
+
+The user explicitly prefers underlined text links. Preserve every existing external URL and the link underlines. Member portraits and names both link to their profile pages. The header remains About Me until students actually join, even after the January appointment.

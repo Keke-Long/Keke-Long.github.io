@@ -10,3 +10,12 @@
 @media(max-width:380px){.identity-text strong{font-size:1.0625rem}.university-logo{width:83px}.identity-text>span{font-size:.8125rem}.loop{width:225px;height:225px}.lab{font-size:.75rem}.core{font-size:1.125rem}.hero-copy h1{font-size:2.5rem}.card-copy{padding:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.direction-card{transition:none}.direction-card:hover{transform:none}}
 @media print{.site-header nav,.menu-toggle,.site-footer,.skip-link{display:none}.wrap{width:100%}.hero{padding:20px 0}.project-row,.direction-card{break-inside:avoid}.announcement-viewport{overflow:visible}.notice-strip{min-width:0}.site-header{border-top:0}}
+
+/* Preserve the original site's understated, underlined resource links. */
+.resource-link{border:0;padding:0;font-size:1rem;font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.resource-link:hover{background:transparent;color:var(--scarlet)}
+.footer-links a,.news-row h3 a,.breadcrumb a,.text-link,.detail-link,.direction-switch a,.member h2 a,.course h2 a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.direction-card .text-link{font-weight:400}
+.project-copy h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+#teaching .plain a{color:inherit;font-weight:400;text-decoration:underline;text-underline-offset:2px}
+.identity-text strong{white-space:nowrap}

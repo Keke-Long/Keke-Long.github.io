@@ -49,15 +49,14 @@ def shell(path, title, description, body, active):
     structured = {'@context':'https://schema.org','@type':'Person','name':DATA['name'],'url':ORIGIN+'/about/','sameAs':[DATA['scholar'],DATA['github'],'https://catslab.engr.wisc.edu/staff/long-keke/']}
     if DATA['chineseName']:
         structured['alternateName'] = DATA['chineseName']
-    if PUBLIC:
-        structured.update(jobTitle='Assistant Professor',affiliation={'@type':'Organization','name':'Rutgers University'})
+    structured.update(jobTitle='Assistant Professor',affiliation={'@type':'Organization','name':'Rutgers University–New Brunswick'})
     year = now.year if PUBLIC else 2026
     page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-original-copy">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-about">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -107,18 +106,15 @@ news = '<section class="news-section wrap" id="news"><div class="section-heading
 home = hero + '<section class="research-section wrap" id="research"><div class="section-heading"><h2>Research Directions</h2></div>'+research_cards()+'</section>'+news
 shell('/','Home','Keke Long’s Lab: physics-enhanced AI, connected and automated vehicles, and intelligent transportation systems. Selected research, datasets, and platforms.',home,'home')
 
-research = '<div class="wrap"><header class="page-heading"><p class="eyebrow">Research</p><h1>Three connected directions.</h1><p>Developing physically consistent AI methods, evaluating connected and automated vehicles, and connecting people, vehicles, and infrastructure.</p></header>'+research_cards()+'<p class="scholar-note">'+a(DATA['scholar'],'Full publication record on Google Scholar')+'</p></div>'
+research = '<div class="wrap"><header class="page-heading"><h1>Research</h1><p>Developing physically consistent AI methods, evaluating connected and automated vehicles, and connecting people, vehicles, and infrastructure.</p></header>'+research_cards()+'<p class="scholar-note">'+a(DATA['scholar'],'Full publication record on Google Scholar')+'</p></div>'
 shell('/research/','Research','Explore Keke Long’s three research directions, with selected papers, datasets, and platforms.',research,'research')
 for i,d in enumerate(DIRECTIONS):
     body=f'''<div class="wrap"><header class="page-heading"><div class="breadcrumb">{a('/research/','Research')}<span>/</span><span>0{i+1}</span></div><h1>{esc(d['title'])}</h1><p>{esc(d['description'])}</p></header><div class="projects">{''.join(project_row(p) for p in d['projects'])}</div><nav class="direction-switch" aria-label="Other research directions">{''.join(a('/research/'+o['slug']+'/',o['title']) for o in DIRECTIONS if o!=d)}</nav></div>'''
     shell('/research/'+d['slug']+'/',d['title'],d['description'],body,'research')
 
-bio = ('I am an Assistant Professor in the Department of Civil and Environmental Engineering at Rutgers University.' if PUBLIC else 'I am a postdoctoral Research Associate at the University of Wisconsin–Madison. I will join the Department of Civil and Environmental Engineering at Rutgers University as an Assistant Professor in January 2027.')
-location_html = '<p>Madison, WI, USA</p>' if not PUBLIC else ''
-appointment = '<div class="appointment"><span class="eyebrow">'+('Rutgers University' if PUBLIC else 'Incoming appointment · January 2027')+'</span><p>Assistant Professor<br>Civil and Environmental Engineering<br>Rutgers University</p></div>'
-about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">About Me</p><h1>{esc(NAME)}</h1><p>{bio}</p><p>My research develops physics-enhanced AI for intelligent transportation systems, with applications in CAV decision-making, control, perception, and safety evaluation.</p><div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2>{location_html}<p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
-if not PUBLIC:
-    about += '<section id="affiliation">'+DATA['profileSections']['affiliation']+'</section>'
+bio = ''.join('<p>'+esc(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
+appointment = '<div class="appointment" id="affiliation"><span class="eyebrow">Rutgers University–New Brunswick</span><p>Assistant Professor<br>Civil and Environmental Engineering</p></div>'
+about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">About Me</p><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
 for section in ['education','teaching','service']:
     about += '<section id="'+section+'">'+DATA['profileSections'][section]+'</section>'
 about += '</div></div></div>'

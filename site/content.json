@@ -224,5 +224,9 @@
       "date": "2026-08",
       "text": "We are co-organizing the inaugural [MIRAI Driving Workshop @ ACCV 2026](https://mengsiwei.github.io/MIRAI_ACCV_Workshop/) on December 15, 2026, in Osaka, Japan, with keynote speakers from Purdue University, Waymo, KAIST, and Hokkaido University."
     }
+  ],
+  "aboutParagraphs": [
+    "Dr. Long is an Assistant Professor in the Department of Civil and Environmental Engineering at Rutgers University–New Brunswick. Dr. Long studies how to improve the safety and reliability of transportation systems.",
+    "Dr. Long has served as co-PI on federally funded transportation research project and instructor of CCAT certificate program. Her research develops AI-based methods that use physical knowledge to improve interpretability and adaptation to changing conditions. She validates these methods through simulation, digital twins, and real-vehicle experiments to support the reliable deployment of automated transportation systems. She has published over 30 papers including Transportation Research Part A/C/E and IEEE ITS/ITSM."
   ]
 }

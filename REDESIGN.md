@@ -27,7 +27,7 @@ Preview pages carry `noindex` and `nofollow`. This does not make a public GitHub
 ## Public launch
 
 On or after the launch date, run `python site/build.py --publish`. The command refuses to build public mode before January 1, 2027 in America/New_York.
-Public mode switches About to the Rutgers Assistant Professor appointment, updates the copyright year, and enables indexing and the sitemap.
+The About page already previews the January Rutgers Assistant Professor appointment. Public mode updates the copyright year and enables indexing and the sitemap.
 Before merging, inspect the current default branch and the latest redesign branch, retain all subsequent edits, and validate local links and generated files.
 Commit the regenerated launch output to the redesign branch, then merge the redesign into `main` and verify the GitHub Pages result at `https://keke-long.github.io/`.
 Do not enable auto-merge early. Do not use a browser-date redirect: GitHub Pages must serve the actual launch output.
@@ -85,3 +85,7 @@ Keep continuous responsive heading sizing, as explicitly confirmed by the user, 
 ## Preserve author-written research copy
 
 The original homepage's short card descriptions and each direction page's longer introduction are distinct authored text. Keep cardDescription and tags in site/content.json verbatim from the prelaunch public homepage (42a6bff951278df4bdf6b1d256c9531dd5fb2fa0). Homepage and Research overview cards both render these fields. description remains the unchanged original direction-page introduction. Preserve the full keyword wording, capitalization, singular/plural forms, and order; do not summarize, substitute, or embellish author-written copy during layout changes. Keywords are plain separate lines with no tinted badges.
+
+## January-ready third-person About biography
+
+The user explicitly requested January 2027 copy in the private preview too. The two paragraphs in site/content.json under aboutParagraphs are the canonical third-person biography; the supplied second paragraph must remain verbatim. Use Assistant Professor, Department of Civil and Environmental Engineering, Rutgers University–New Brunswick. The preview and launch use the same biography and appointment; do not restore a current-postdoc/incoming narrative. Remove the outdated current-affiliation block and Madison location from the January About page while retaining education, teaching, service, contact email, and links. Do not invent a Rutgers email or office. The portrait is 190×228 px on desktop and 140×168 px on mobile. The Research overview h1 is simply Research, with no duplicate eyebrow above it.

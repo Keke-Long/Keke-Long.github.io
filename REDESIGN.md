@@ -97,3 +97,9 @@ The navigation now says People immediately, including before any students join. 
 ## Approved polished biography and affiliation links
 
 The user approved the polished two-paragraph biography on September 8. Preserve the latest aboutParagraphs text in site/content.json; this replaces the earlier unpolished second paragraph. These paragraphs now support the same inline Markdown link syntax as News. The first paragraph links Department of Civil and Environmental Engineering to https://cee.rutgers.edu/ and Rutgers University–New Brunswick to https://newbrunswick.rutgers.edu/, both verified official homepages. Render both as underlined, normal-weight accent text. Keep the remainder of the approved wording unchanged.
+
+## Compact profile sections without a sidebar
+
+Remove the left appointment/contact sidebar entirely as requested, including its email and prospective-students link. The approved biography, portrait, and Scholar/GitHub links remain above full-width, vertically stacked Education, Teaching, and Service sections. Education and Teaching retain all original wording and the course link, with compact unbulleted rows and subtle section dividers. Preserve the old #affiliation entrypoint on the biography header.
+
+Service is intentionally understated: a readable 20 px Peer Review subheading followed by one paragraph with selected representative journals from the original list: Transportation Research Parts B/C/E, Accident Analysis and Prevention, and Engineering Applications of Artificial Intelligence. The word including makes clear this is a selection, not a complete list or a claim of editorial-board membership. Do not recreate the lengthy journal-by-journal list.

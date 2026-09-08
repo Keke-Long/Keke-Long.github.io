@@ -56,7 +56,7 @@ def shell(path, title, description, body, active):
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-bio-links">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-profile-sections">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -114,11 +114,10 @@ for i,d in enumerate(DIRECTIONS):
 
 about_label = 'About Me' if DATA['people'] else 'People'
 bio = ''.join('<p>'+linked_paragraph(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
-appointment = '<div class="appointment" id="affiliation"><span class="eyebrow">Rutgers University–New Brunswick</span><p>Assistant Professor<br>Civil and Environmental Engineering</p></div>'
-about = f'''<div class="wrap"><header class="about-heading"><div><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
+about = f'''<div class="wrap"><header class="about-heading" id="affiliation"><div><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="profile-content">'''
 for section in ['education','teaching','service']:
     about += '<section id="'+section+'">'+DATA['profileSections'][section]+'</section>'
-about += '</div></div></div>'
+about += '</div></div>'
 shell('/about/',about_label,'Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')
 
 widths=[118,117,117,118,118,117,117,118,118,117]

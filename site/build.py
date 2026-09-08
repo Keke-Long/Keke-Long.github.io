@@ -44,7 +44,7 @@ def shell(path, title, description, body, active):
     nav.append(('Join Us','/join/','join'))
     links = ''.join(f'<a href="{href}"' + (' aria-current="page"' if key == active else '') + (' class="nav-join"' if key=='join' else '') + f'>{label}</a>' for label,href,key in nav)
     mark = image(DATA['logo'], 'Rutgers University', 'university-logo', True) if DATA['logo'] else ''
-    fulltitle = f'{title} | {NAME}' if path != '/' else f'{DATA["labName"]} | {NAME} | Rutgers University'
+    fulltitle = DATA['siteTitle']
     robots = 'index, follow, noimageindex' if PUBLIC else 'noindex, nofollow, noimageindex'
     structured = {'@context':'https://schema.org','@type':'Person','name':DATA['name'],'url':ORIGIN+'/about/','sameAs':[DATA['scholar'],DATA['github'],'https://catslab.engr.wisc.edu/staff/long-keke/']}
     if DATA['chineseName']:
@@ -55,7 +55,7 @@ def shell(path, title, description, body, active):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
-<meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
+<meta property="og:site_name" content="{esc(DATA['siteTitle'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
 <link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-profile-sections">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>

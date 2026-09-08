@@ -103,3 +103,7 @@ The user approved the polished two-paragraph biography on September 8. Preserve 
 Remove the left appointment/contact sidebar entirely as requested, including its email and prospective-students link. The approved biography, portrait, and Scholar/GitHub links remain above full-width, vertically stacked Education, Teaching, and Service sections. Education and Teaching retain all original wording and the course link, with compact unbulleted rows and subtle section dividers. Preserve the old #affiliation entrypoint on the biography header.
 
 Service is intentionally understated: a readable 20 px Peer Review subheading followed by one paragraph with selected representative journals from the original list: Transportation Research Parts B/C/E, Accident Analysis and Prevention, and Engineering Applications of Artificial Intelligence. The word including makes clear this is a selection, not a complete list or a claim of editorial-board membership. Do not recreate the lengthy journal-by-journal list.
+
+## Website title
+
+Use the exact user-requested siteTitle, Keke Long's Lab @ Rutgers (straight apostrophe), for all browser-tab titles and Open Graph title/site-name metadata. Keep visible page headings and the navigation brand unchanged.

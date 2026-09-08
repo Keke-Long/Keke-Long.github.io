@@ -75,3 +75,9 @@ Each of the three direction pages has its direction title and existing short ope
 - The homepage section title is simply “Research Directions”, with no eyebrow or extra slogan.
 - The compact footer reads “Keke Long’s Lab @ Rutgers University”, followed by department, university, and location. Links and copyright share a compact secondary column.
 - Department and location source: https://cee.rutgers.edu/contact-us (September 8, 2026). Use Department of Civil and Environmental Engineering; Rutgers University–New Brunswick; Piscataway, NJ, USA. This is the department location, not an invented personal office address.
+
+## Neutral surfaces and restrained teal (latest preference)
+
+This refinement supersedes earlier palette and heading-size notes. Use white page backgrounds and neutral gray surfaces (#f5f5f5), borders (#e3e3e3), dark text (#292d30) and secondary text (#666a6d). Restrict the blue-leaning green accent (#197b78) to links, diagram strokes, and selected emphasis; no green-tinted large backgrounds. Rutgers R and favicon stay scarlet.
+
+Keep continuous responsive heading sizing, as explicitly confirmed by the user, but reduce its upper limit. All page h1 headings, including About Me, Research and the homepage hero, share --title-size: clamp(2rem, 3.2vw, 2.75rem), or 32–44 px with the normal 16 px base. Section headings share --section-size (26–32 px), and research-entry/card headings use --item-title-size (24 px). Remove mobile heading-size overrides so the scale has no breakpoint jumps. Keep the shared Arial sans-serif family and the explicit hero line break after AI.

@@ -86,6 +86,12 @@
             }
           ]
         }
+      ],
+      "cardDescription": "Developing interpretable, physically consistent, and robust AI methods for transportation systems.",
+      "tags": [
+        "Physics-Enhanced Residual Learning (PERL)",
+        "Physics-Informed Neural Network (PINN)",
+        "VLM"
       ]
     },
     {
@@ -139,6 +145,12 @@
             }
           ]
         }
+      ],
+      "cardDescription": "Evaluating and improving the safety and performance of CAVs in challenging scenarios.",
+      "tags": [
+        "Full-Scale CAV Field Test",
+        "Safety Evaluation",
+        "Vehicle-in-the-Loop (ViL)"
       ]
     },
     {
@@ -192,6 +204,12 @@
             }
           ]
         }
+      ],
+      "cardDescription": "Studying how people, vehicles, and transportation infrastructure can be connected and coordinated to improve safety and efficiency.",
+      "tags": [
+        "Traffic sensing",
+        "Digital twin",
+        "Transportation data"
       ]
     }
   ],

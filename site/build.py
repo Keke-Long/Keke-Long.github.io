@@ -57,7 +57,7 @@ def shell(path, title, description, body, active):
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-teal-type">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-original-copy">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -71,12 +71,11 @@ def shell(path, title, description, body, active):
 
 def research_cards():
     illustrations = [DIRECTIONS[0]['projects'][1], DIRECTIONS[1]['projects'][0], DIRECTIONS[2]['projects'][0]]
-    tags = ['Physics-enhanced learning · VLMs', 'Field testing · Safety evaluation', 'Traffic sensing · Digital twins']
     cards = []
     for i, d in enumerate(DIRECTIONS):
         p=illustrations[i]
         cards.append(f'''<a class="direction-card" href="/research/{d['slug']}/">
-<div class="card-figure">{image(p['image'],p['alt'])}</div><div class="card-copy"><span class="eyebrow">Research / 0{i+1}</span><h3>{esc(d['title'])}</h3><p>{esc(d['description'])}</p><span class="card-tags">{tags[i]}</span><span class="text-link">Explore this direction <span aria-hidden="true">↗</span></span></div></a>''')
+<div class="card-figure">{image(p['image'],p['alt'])}</div><div class="card-copy"><span class="eyebrow">Research / 0{i+1}</span><h3>{esc(d['title'])}</h3><p>{esc(d['cardDescription'])}</p><span class="card-tags">{''.join('<span>'+esc(tag)+'</span>' for tag in d['tags'])}</span><span class="text-link">Explore this direction <span aria-hidden="true">↗</span></span></div></a>''')
     return '<div class="direction-grid">'+''.join(cards)+'</div>'
 
 def project_links(p):

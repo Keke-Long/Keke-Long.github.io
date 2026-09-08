@@ -1,3 +1,5 @@
+> This is the independent `homepage-exploration` branch. It is not the selected January launch branch. Keep `redesign-2027` as the launch source unless the user explicitly adopts this design. See HOMEPAGE_EXPLORATION.md.
+
 # Keke Long’s Lab — 2027 redesign
 
 This version is developed on `redesign-2027` in the existing repository.

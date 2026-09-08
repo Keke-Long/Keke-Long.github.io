@@ -158,3 +158,8 @@ for folder in [ROOT,dist]:
     (folder/'sitemap.xml').write_text(sitemap)
     (folder/'.nojekyll').write_text('')
 print(f'Built {len(PAGES)} pages in '+('PUBLIC' if PUBLIC else 'PREVIEW')+' mode.')
+
+# This independent exploration branch applies only the alternate homepage layout.
+import subprocess
+import sys
+subprocess.run([sys.executable, str(ROOT/'site/build_home_exploration.py')], check=True)

@@ -36,7 +36,7 @@ def image(path, alt, cls='', eager=False):
 def shell(path, title, description, body, active):
     if DATA['people'] and active == 'about':
         active = 'people'
-    nav = [('Home','/','home'),('Research','/research/','research'),('About Me','/about/','about')]
+    nav = [('Home','/','home'),('Research','/research/','research'),('People','/about/','about')]
     if DATA['people']:
         nav[2] = ('People','/people/','people')
     if DATA['courses']:
@@ -112,13 +112,14 @@ for i,d in enumerate(DIRECTIONS):
     body=f'''<div class="wrap"><header class="page-heading"><div class="breadcrumb">{a('/research/','Research')}<span>/</span><span>0{i+1}</span></div><h1>{esc(d['title'])}</h1><p>{esc(d['description'])}</p></header><div class="projects">{''.join(project_row(p) for p in d['projects'])}</div><nav class="direction-switch" aria-label="Other research directions">{''.join(a('/research/'+o['slug']+'/',o['title']) for o in DIRECTIONS if o!=d)}</nav></div>'''
     shell('/research/'+d['slug']+'/',d['title'],d['description'],body,'research')
 
+about_label = 'About Me' if DATA['people'] else 'People'
 bio = ''.join('<p>'+esc(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
 appointment = '<div class="appointment" id="affiliation"><span class="eyebrow">Rutgers University–New Brunswick</span><p>Assistant Professor<br>Civil and Environmental Engineering</p></div>'
-about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">About Me</p><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
+about = f'''<div class="wrap"><header class="about-heading"><div><p class="eyebrow">{about_label}</p><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
 for section in ['education','teaching','service']:
     about += '<section id="'+section+'">'+DATA['profileSections'][section]+'</section>'
 about += '</div></div></div>'
-shell('/about/','About Me','Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')
+shell('/about/',about_label,'Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')
 
 widths=[118,117,117,118,118,117,117,118,118,117]
 slices=''.join(f'<img src="/assets/images/notice-slices/notice-{i:02}.png" alt="" aria-hidden="true" width="{w}" height="331" style="flex:{w} 0 0">' for i,w in enumerate(widths,1))

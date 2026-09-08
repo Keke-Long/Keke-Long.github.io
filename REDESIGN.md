@@ -89,3 +89,7 @@ The original homepage's short card descriptions and each direction page's longer
 ## January-ready third-person About biography
 
 The user explicitly requested January 2027 copy in the private preview too. The two paragraphs in site/content.json under aboutParagraphs are the canonical third-person biography; the supplied second paragraph must remain verbatim. Use Assistant Professor, Department of Civil and Environmental Engineering, Rutgers University–New Brunswick. The preview and launch use the same biography and appointment; do not restore a current-postdoc/incoming narrative. Remove the outdated current-affiliation block and Madison location from the January About page while retaining education, teaching, service, contact email, and links. Do not invent a Rutgers email or office. The portrait is 190×228 px on desktop and 140×168 px on mobile. The Research overview h1 is simply Research, with no duplicate eyebrow above it.
+
+## People label (latest navigation decision)
+
+The navigation now says People immediately, including before any students join. With an empty people array, it opens the existing /about/ page containing Keke Long’s full biography; that page also shows People as its eyebrow and browser title. Once actual member records are added, People opens the existing /people/ team listing and Keke Long’s stable /about/ page uses its individual About Me label again. This supersedes all earlier instructions to wait for students before changing the navigation label. Do not create placeholder members or alter the biography.

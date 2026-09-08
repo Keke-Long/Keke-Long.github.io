@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 import argparse
 import json
 import shutil
+import re
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = json.loads((ROOT / 'site/content.json').read_text())
@@ -57,11 +58,11 @@ def shell(path, title, description, body, active):
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-blue">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner"><a class="identity" href="/" aria-label="Keke Long Lab home">{mark}<span class="identity-text"><strong>{esc(DATA['labName'])}</strong><span>Rutgers University</span></span></a>
+<header class="site-header"><div class="header-inner"><a class="identity" href="/" aria-label="{esc(DATA['labName'], quote=True)} home">{mark}<span class="identity-text"><strong>{esc(DATA['labName'])}</strong><span>Rutgers University</span></span></a>
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
 <nav id="navigation" aria-label="Main navigation">{links}</nav></div></header>
 <main id="main">{body}</main>
@@ -88,9 +89,25 @@ def project_row(p):
 
 hero = '''<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">Physics-Enhanced AI · CAVs · ITS</p><h1 id="hero-title">Building Transportation AI that can be <em>Trusted.</em></h1><p class="hero-description">Physics-enhanced learning, connected and automated vehicles, and intelligent transportation systems.</p></div>
 <div class="concept" role="img" aria-label="Safety and Mobility at the center of Control, Reason, Perception, and Validate."><div class="loop"><div class="core">Safety &amp;<br>Mobility</div><span class="lab la">Control</span><span class="lab lb">Reason</span><span class="lab lc">Perception</span><span class="lab ld">Validate</span></div></div></section>'''
-news = '''<section class="news-section wrap" id="news"><div class="section-heading"><p class="eyebrow">From the lab</p><h2>News</h2></div><article class="news-row"><time datetime="2026-08">AUG 2026</time><div><h3><a href="https://mengsiwei.github.io/MIRAI_ACCV_Workshop/">MIRAI Driving Workshop at ACCV 2026</a></h3><p>Co-organizing the inaugural workshop on multimodal intelligence and autonomous driving in Osaka, Japan. Scheduled for December 15, 2026, with keynote speakers from Purdue University, Waymo, KAIST, and Hokkaido University.</p></div><span class="news-type">Workshop</span></article></section>'''
+def news_paragraph(text):
+    """One editable paragraph; Markdown links keep news maintenance simple."""
+    parts = []
+    position = 0
+    for match in re.finditer(r'\[([^\]]+)\]\((https?://[^)\s]+)\)', text):
+        parts.append(esc(text[position:match.start()]))
+        parts.append(a(match.group(2), match.group(1)))
+        position = match.end()
+    parts.append(esc(text[position:]))
+    return ''.join(parts)
+
+news_rows = []
+for item in DATA.get('news', []):
+    label = datetime.strptime(item['date'], '%Y-%m').strftime('%B %Y')
+    news_rows.append(f'<article class="news-row"><time datetime="{esc(item["date"])}">{label}</time><p>{news_paragraph(item["text"])}</p></article>')
+news = '<section class="news-section wrap" id="news"><div class="section-heading"><h2>News</h2></div>' + ''.join(news_rows) + '</section>'
+
 home = hero + '<section class="research-section wrap" id="research"><div class="section-heading"><p class="eyebrow">Research directions</p><h2>From physical insight<br>to transportation systems.</h2></div>'+research_cards()+'</section>'+news
-shell('/','Home','Keke Long Lab: physics-enhanced AI, connected and automated vehicles, and intelligent transportation systems. Selected research, datasets, and platforms.',home,'home')
+shell('/','Home','Keke Long’s Lab: physics-enhanced AI, connected and automated vehicles, and intelligent transportation systems. Selected research, datasets, and platforms.',home,'home')
 
 research = '<div class="wrap"><header class="page-heading"><p class="eyebrow">Research</p><h1>Three connected directions.</h1><p>Developing physically consistent AI methods, evaluating connected and automated vehicles, and connecting people, vehicles, and infrastructure.</p></header>'+research_cards()+'<p class="scholar-note">'+a(DATA['scholar'],'Full publication record on Google Scholar')+'</p></div>'
 shell('/research/','Research','Explore Keke Long’s three research directions, with selected papers, datasets, and platforms.',research,'research')
@@ -114,15 +131,15 @@ shell('/about/','About Me','Keke Long’s academic background, research interest
 
 widths=[118,117,117,118,118,117,117,118,118,117]
 slices=''.join(f'<img src="/assets/images/notice-slices/notice-{i:02}.png" alt="" aria-hidden="true" width="{w}" height="331" style="flex:{w} 0 0">' for i,w in enumerate(widths,1))
-join=f'''<div class="wrap join-page"><header class="page-heading"><p class="eyebrow">Join us</p><h1>Explore what comes next.</h1><p>Research opportunities at Keke Long Lab.<br>Rutgers University · Civil and Environmental Engineering</p></header><div class="announcement-viewport" tabindex="0" aria-label="Research group announcement. Scroll horizontally on small screens to read the full announcement."><div class="notice-strip" role="img" aria-label="Research group announcement">{slices}</div></div><p class="mobile-note">Swipe across the announcement to read it in full.</p><div class="join-research"><h2>Get to know the research.</h2><p>Explore the three research directions and the selected work within each.</p>{a('/research/','Explore research','text-link')}</div></div>'''
-shell('/join/','Join Us','Research opportunities at Keke Long Lab, Rutgers University.',join,'join')
+join=f'''<div class="wrap join-page"><header class="page-heading"><p class="eyebrow">Join us</p><h1>Explore what comes next.</h1><p>Research opportunities at {esc(DATA['labName'])}.<br>Rutgers University · Civil and Environmental Engineering</p></header><div class="announcement-viewport" tabindex="0" aria-label="Research group announcement. Scroll horizontally on small screens to read the full announcement."><div class="notice-strip" role="img" aria-label="Research group announcement">{slices}</div></div><p class="mobile-note">Swipe across the announcement to read it in full.</p><div class="join-research"><h2>Get to know the research.</h2><p>Explore the three research directions and the selected work within each.</p>{a('/research/','Explore research','text-link')}</div></div>'''
+shell('/join/','Join Us','Research opportunities at Keke Long’s Lab, Rutgers University.',join,'join')
 
 # Optional sections appear only after real records have been added.
 if DATA['people']:
     members = '<article class="member">'+'<a href="/about/">'+image('assets/images/profile.jpg','Keke Long')+'</a><h2>'+a('/about/',NAME)+'</h2><p>Faculty</p></article>'
     for m in DATA['people']:
         members += '<article class="member">'+(('<a href="'+esc(m['url'],quote=True)+'">'+image(m['image'],m['name'])+'</a>') if m.get('image') and m.get('url') else (image(m['image'],m['name']) if m.get('image') else ''))+'<h2>'+ (a(m['url'],m['name']) if m.get('url') else esc(m['name']))+'</h2><p>'+esc(m['role'])+'</p></article>'
-    shell('/people/','People','Members of Keke Long Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">People</p><h1>Our team.</h1></header><div class="member-grid">'+members+'</div></div>','people')
+    shell('/people/','People','Members of Keke Long’s Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">People</p><h1>Our team.</h1></header><div class="member-grid">'+members+'</div></div>','people')
 if DATA['courses']:
     courses=''.join('<article class="course"><p class="eyebrow">'+esc(c['term'])+'</p><h2>'+a(c['url'],c['title'])+'</h2><p>'+esc(c['description'])+'</p></article>' for c in DATA['courses'])
     shell('/teaching/','Teaching','Courses taught by Keke Long at Rutgers University.','<div class="wrap"><header class="page-heading"><p class="eyebrow">Teaching</p><h1>Courses.</h1></header>'+courses+'</div>','teaching')
@@ -130,7 +147,7 @@ if DATA['courses']:
 # Preserve the old direction URL and old homepage anchor entrypoints.
 shell('/research/trustworthy-ai/','Physics-Enhanced AI for Transportation','Physics-enhanced AI research by Keke Long.','<div class="wrap"><header class="page-heading"><h1>Physics-Enhanced AI for Transportation</h1><p>'+a('/research/physics-enhanced-learning/','Continue to Physics-Enhanced AI for Transportation')+'</p></header></div>','research')
 PAGES['/research/trustworthy-ai/'] = PAGES['/research/trustworthy-ai/'].replace('</head>', '<meta http-equiv="refresh" content="0; url=/research/physics-enhanced-learning/"></head>').replace(ORIGIN+'/research/trustworthy-ai/', ORIGIN+'/research/physics-enhanced-learning/')
-shell('/404.html','Page not found','Find research and information from Keke Long Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">404</p><h1>Page not found.</h1><p>'+a('/','Return to the homepage')+' or '+a('/research/','explore the research')+'.</p></header></div>','')
+shell('/404.html','Page not found','Find research and information from Keke Long’s Lab.','<div class="wrap"><header class="page-heading"><p class="eyebrow">404</p><h1>Page not found.</h1><p>'+a('/','Return to the homepage')+' or '+a('/research/','explore the research')+'.</p></header></div>','')
 
 dist=ROOT/'dist'
 dist.mkdir(exist_ok=True)

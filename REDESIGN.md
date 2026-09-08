@@ -93,3 +93,7 @@ The user explicitly requested January 2027 copy in the private preview too. The 
 ## People label (latest navigation decision)
 
 The navigation now says People immediately, including before any students join. With an empty people array, it opens the existing /about/ page containing Keke Long’s full biography; that page uses People in its browser title, with only the name heading above the biography and no About Me/People eyebrow. Once actual member records are added, People opens the existing /people/ team listing and Keke Long’s stable /about/ page uses its individual About Me label again. This supersedes all earlier instructions to wait for students before changing the navigation label. Do not create placeholder members or alter the biography.
+
+## Approved polished biography and affiliation links
+
+The user approved the polished two-paragraph biography on September 8. Preserve the latest aboutParagraphs text in site/content.json; this replaces the earlier unpolished second paragraph. These paragraphs now support the same inline Markdown link syntax as News. The first paragraph links Department of Civil and Environmental Engineering to https://cee.rutgers.edu/ and Rutgers University–New Brunswick to https://newbrunswick.rutgers.edu/, both verified official homepages. Render both as underlined, normal-weight accent text. Keep the remainder of the approved wording unchanged.

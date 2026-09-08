@@ -20,3 +20,5 @@
 .identity-text strong{white-space:nowrap}
 
 .news-row p a{color:var(--accent);font-weight:400}.news-section .section-heading h2{margin-top:0}.hero-copy h1{font-weight:600}.lab{font-weight:600}
+
+.about-heading p a{color:var(--accent);font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}

@@ -56,7 +56,7 @@ def shell(path, title, description, body, active):
 <title>{esc(fulltitle)}</title><meta name="description" content="{esc(description, quote=True)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{ORIGIN}{path}">
 <meta property="og:site_name" content="{esc(DATA['labName'])}"><meta property="og:title" content="{esc(fulltitle, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">
-<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-about">
+<link rel="icon" href="/favicon.svg?v=20260908-r" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20260908-bio-links">
 <script type="application/ld+json">{json.dumps(structured,ensure_ascii=False).replace('</','<\\/')}</script>
 <script src="/site.js" defer></script></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -86,8 +86,8 @@ def project_row(p):
 
 hero = '''<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">Physics-Enhanced AI · CAVs · ITS</p><h1 id="hero-title">Building Transportation AI<br>that can be <em>Trusted.</em></h1><p class="hero-description">Physics-enhanced learning, connected and automated vehicles, and intelligent transportation systems.</p></div>
 <div class="concept" role="img" aria-label="Safety and Mobility at the center of Control, Reason, Perception, and Validate."><div class="loop"><div class="core">Safety &amp;<br>Mobility</div><span class="lab la">Control</span><span class="lab lb">Reason</span><span class="lab lc">Perception</span><span class="lab ld">Validate</span></div></div></section>'''
-def news_paragraph(text):
-    """One editable paragraph; Markdown links keep news maintenance simple."""
+def linked_paragraph(text):
+    """One editable paragraph with escaped text and inline Markdown links."""
     parts = []
     position = 0
     for match in re.finditer(r'\[([^\]]+)\]\((https?://[^)\s]+)\)', text):
@@ -100,7 +100,7 @@ def news_paragraph(text):
 news_rows = []
 for item in DATA.get('news', []):
     label = datetime.strptime(item['date'], '%Y-%m').strftime('%B %Y')
-    news_rows.append(f'<article class="news-row"><time datetime="{esc(item["date"])}">{label}</time><p>{news_paragraph(item["text"])}</p></article>')
+    news_rows.append(f'<article class="news-row"><time datetime="{esc(item["date"])}">{label}</time><p>{linked_paragraph(item["text"])}</p></article>')
 news = '<section class="news-section wrap" id="news"><div class="section-heading"><h2>News</h2></div>' + ''.join(news_rows) + '</section>'
 
 home = hero + '<section class="research-section wrap" id="research"><div class="section-heading"><h2>Research Directions</h2></div>'+research_cards()+'</section>'+news
@@ -113,7 +113,7 @@ for i,d in enumerate(DIRECTIONS):
     shell('/research/'+d['slug']+'/',d['title'],d['description'],body,'research')
 
 about_label = 'About Me' if DATA['people'] else 'People'
-bio = ''.join('<p>'+esc(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
+bio = ''.join('<p>'+linked_paragraph(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
 appointment = '<div class="appointment" id="affiliation"><span class="eyebrow">Rutgers University–New Brunswick</span><p>Assistant Professor<br>Civil and Environmental Engineering</p></div>'
 about = f'''<div class="wrap"><header class="about-heading"><div><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="about-grid"><aside>{appointment}<div class="contact-block"><h2>Contact</h2><p>klong23 AT wisc . edu</p>{a('/join/','Prospective students','text-link')}</div></aside><div class="profile-content">'''
 for section in ['education','teaching','service']:

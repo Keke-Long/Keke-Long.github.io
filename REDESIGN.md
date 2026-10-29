@@ -107,3 +107,10 @@ Service is intentionally understated: a readable 20 px Peer Review subheading fo
 ## Website title
 
 Use the exact user-requested siteTitle, Keke Long's Lab @ Rutgers (straight apostrophe), for all browser-tab titles and Open Graph title/site-name metadata. Keep visible page headings and the navigation brand unchanged.
+
+
+## Incremental redesign workflow (October 28)
+
+Keep all redesign edits on `redesign-2027`; never merge into `main` or change GitHub Pages deployment settings during iteration. Update source files, rebuild both root pages and `dist/`, and verify the scoped diff before each commit. Public-site changes must be explicitly requested; when relevant, port their content into the redesign without overwriting its layout. Each requested refinement should be a separate reversible commit.
+
+People includes an Awards & Honors section and an in-page shortcut alongside Scholar/GitHub. Only the verified 2025 WISL award is currently listed. Add an Editorial Appointments subsection before Peer Review when the user confirms the exact journal name; do not infer it from speech transcription. The hosting project currently recorded in `.openai/hosting.json` returned NOT_FOUND on October 28, so it is not a verified working preview.

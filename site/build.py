@@ -114,8 +114,8 @@ for i,d in enumerate(DIRECTIONS):
 
 about_label = 'About Me' if DATA['people'] else 'People'
 bio = ''.join('<p>'+linked_paragraph(paragraph)+'</p>' for paragraph in DATA['aboutParagraphs'])
-about = f'''<div class="wrap"><header class="about-heading" id="affiliation"><div><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="profile-content">'''
-for section in ['education','teaching','service']:
+about = f'''<div class="wrap"><header class="about-heading" id="affiliation"><div><h1>{esc(NAME)}</h1>{bio}<div class="project-links">{a(DATA['scholar'],'Google Scholar','resource-link')}{a(DATA['github'],'GitHub','resource-link')}{a('#awards','Awards & Honors','resource-link')}</div></div>{image('assets/images/profile.jpg','Keke Long','portrait',True)}</header><div class="profile-content">'''
+for section in ['education','awards','teaching','service']:
     about += '<section id="'+section+'">'+DATA['profileSections'][section]+'</section>'
 about += '</div></div>'
 shell('/about/',about_label,'Keke Long’s academic background, research interests, teaching experience, and service.',about,'about')

@@ -63,7 +63,6 @@
 .service-detail,.service-detail p{color:#000000}
 .service-detail p{margin:0 0 5px}
 .service-detail p:last-child{margin-bottom:0}
-#service h2{border-left:3px solid #00695C;padding-left:16px}
 @media(max-width:600px){.service-row{grid-template-columns:1fr;gap:5px;padding:15px 0}}
 
 /* Site color system: black text, Deep Teal accent, one gray for secondary text. */

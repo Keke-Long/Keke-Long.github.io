@@ -94,7 +94,7 @@ if (perlButton && perlSurprise) {
     const bounds = perlButton.getBoundingClientRect();
     const x = bounds.left + bounds.width / 2;
     const y = bounds.top + bounds.height / 2;
-    const colors = ['#2f7d57', '#72bc95', '#e4bf63', '#93a9d8', '#e9a4b3'];
+    const colors = ['#24345a', '#cc0033', '#e4bf63', '#93a9d8', '#e9a4b3'];
     for (let i = 0; i < 36; i++) {
       const particle = document.createElement('span');
       particle.className = 'perl-confetti';

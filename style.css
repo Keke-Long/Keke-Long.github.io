@@ -244,3 +244,15 @@ main h3,.card-copy h3,.demo-card h3{letter-spacing:-.02em;font-weight:600}
 .highlight-card:hover img{transform:scale(1.03)}
 }
 @media (prefers-reduced-motion:reduce){.highlight-caption,.highlight-card img{transition:none}.highlight-card:hover img{transform:none}}
+/* compact spacing */
+.hero{padding-top:48px;padding-bottom:52px}
+.hero-copy h1{margin:14px 0 18px}
+.hero-actions{margin-top:24px}
+.research-section,.demos-section,.news-section,.highlights-section{padding-top:44px;padding-bottom:44px}
+.section-heading{margin-bottom:22px}
+.section-heading h2:before{margin-bottom:12px}
+.card-copy{padding:20px 22px 22px}
+.news-row{padding:18px 0}
+.footer-inner{padding:32px 0}
+@media(max-width:1080px){.hero{padding-top:40px;padding-bottom:44px}}
+@media(max-width:760px){.hero{padding-top:28px;padding-bottom:32px}.research-section,.demos-section,.news-section,.highlights-section{padding-top:34px;padding-bottom:34px}}
